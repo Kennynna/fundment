@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Фаворит-групп
 
-## Getting Started
+Лендинг на Next.js, TypeScript, Tailwind CSS и Motion, с локальным Manrope.
 
-First, run the development server:
+## Запуск
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Используется Webpack из-за сбоя CSS worker в Turbopack на текущей Windows-среде.
 
-## Learn More
+## Содержимое
 
-To learn more about Next.js, take a look at the following resources:
+- `app/page.tsx` — секции лендинга.
+- `components/construction-hero.tsx` — иллюстративная анимация пяти этапов, пауза, повтор и ручная навигация.
+- `components/site-header.tsx` — навигация и мобильное меню.
+- `app/globals.css` — единая система оформления и адаптивность.
+- `public/images/` — сгенерированные тематические изображения, оригиналы и WebP.
+- `docs/design-plan.md` — дизайн-решения, ограничения и промпты изображений.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Карточки фундаментов появляются последовательно при входе в экран. После них — сцена бетонирования на 300svh (240svh на телефоне), управляемая прокруткой. При уменьшении движения показывается статичная готовая конструкция.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Блок связи содержит Telegram и WhatsApp. Пока контакты демонстрационные: `url: null` в `components/social-contacts.tsx`. Для подключения заменить null на подтверждённые ссылки компании. Форма подготовки запроса удалена по аннотации пользователя.
 
-## Deploy on Vercel
+География, цены, реальные объекты и логотип ещё не предоставлены. Сгенерированные изображения не выдаются за работы компании.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Браузерная проверка: `node scripts/smoke-ui.mjs` (локальный production-сервер должен быть запущен). Проверяются 320–1440 px, навигация, появление карточек, фазы бетонирования, мессенджеры и уменьшенное движение. Chrome запускается в headless-режиме и закрывается по собственному PID.
