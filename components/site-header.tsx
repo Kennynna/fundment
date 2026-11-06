@@ -17,7 +17,7 @@ export function SiteHeader() {
         К содержимому
       </a>
       <div className="wrap header-row">
-        <a href="#" className="wordmark" onClick={() => setOpen(false)}>
+        <a href="#main" className="wordmark" onClick={() => setOpen(false)}>
           Фаворит<span>—</span>групп<span className="brand-dot">.</span>
         </a>
         <nav className="desktop-nav" aria-label="Основная навигация">
@@ -32,7 +32,7 @@ export function SiteHeader() {
           href="#project"
           onClick={() => setOpen(false)}
         >
-          Ваш проект <span aria-hidden="true">↗</span>
+          Обсудить проект <span aria-hidden="true">↗</span>
         </a>
         <button
           type="button"

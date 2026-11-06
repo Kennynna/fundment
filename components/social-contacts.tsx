@@ -31,14 +31,10 @@ export function SocialContacts() {
         <span className="eyebrow">На связи с вашим проектом</span>
         <span aria-hidden="true">↗</span>
       </div>
-      <h3>
-        Начнём
-        <br />с разговора.
-      </h3>
+      <h3>Начнём с разговора</h3>
       <p className="social-intro">
-        Выберите удобный мессенджер.
-        <br />
-        Расскажите о задаче и приложите проект, если он уже есть.
+        Выберите удобный мессенджер. Расскажите о задаче и приложите проект,
+        если он уже есть.
       </p>
       <div className="social-channels">
         {channels.map((channel) => {
