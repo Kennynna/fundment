@@ -135,6 +135,48 @@ try {
       await evaluate('document.querySelectorAll(".trust-card").length === 4'),
       `Four trust cards at ${width}px`,
     );
+    const layerButtons = '#foundation-cutaway [aria-label="Слои плитного фундамента"] button';
+    assert(
+      await evaluate(`document.querySelectorAll('${layerButtons}').length === 5`),
+      `Five interactive foundation layers at ${width}px`,
+    );
+    for (let layer = 0; layer < 5; layer++) {
+      const center = await evaluate(`(()=>{const button=document.querySelectorAll('${layerButtons}')[${layer}];button.scrollIntoView({block:'center',behavior:'instant'});const r=button.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);
+      await call("Input.dispatchMouseEvent", { type: "mousePressed", ...center, button: "left", clickCount: 1 });
+      await call("Input.dispatchMouseEvent", { type: "mouseReleased", ...center, button: "left", clickCount: 1 });
+      assert(
+        await evaluate(`(()=>{const buttons=Array.from(document.querySelectorAll('${layerButtons}'));const button=buttons[${layer}];const details=document.getElementById(button.getAttribute('aria-controls'));return button.getAttribute('aria-pressed')==='true'&&buttons.filter(b=>b.getAttribute('aria-pressed')==='true').length===1&&details.querySelector('h3').textContent===button.querySelector('strong').textContent;})()`),
+        `Layer ${layer + 1} updates its explanation at ${width}px`,
+      );
+    }
+    for (const [buttonIndex, description] of [[1, "условный пример нарушений"], [0, "выполнение по проекту"]]) {
+      await evaluate(`document.querySelectorAll('#foundation-cutaway [aria-label="Сравнение качества исполнения"] button')[${buttonIndex}].click()`);
+      assert(
+        await evaluate(`document.querySelector('#foundation-cutaway svg[role="group"]').getAttribute('aria-label').includes('${description}')`),
+        `Comparison switches to ${description} at ${width}px`,
+      );
+    }
+    await evaluate(`document.querySelector('#foundation-cutaway svg [role="button"]').focus()`);
+    await call("Input.dispatchKeyEvent", { type: "keyDown", key: "Enter", code: "Enter", windowsVirtualKeyCode: 13 });
+    await call("Input.dispatchKeyEvent", { type: "keyUp", key: "Enter", code: "Enter", windowsVirtualKeyCode: 13 });
+    assert(
+      await evaluate(`document.querySelectorAll('${layerButtons}')[0].getAttribute('aria-pressed')==='true'`),
+      `Diagram supports keyboard layer selection at ${width}px`,
+    );
+    // Keep the material-rich concrete view for visual review.
+    await evaluate(`document.activeElement?.blur();document.querySelectorAll('${layerButtons}')[4].click();document.querySelector('#foundation-cutaway').scrollIntoView({block:'start',behavior:'instant'})`);
+    await call("Input.dispatchMouseEvent", { type: "mouseMoved", x: 0, y: 0 });
+    await sleep(250);
+    const cutawayClip = await evaluate(`(()=>{const r=document.querySelector('#foundation-cutaway').getBoundingClientRect();return {x:0,y:r.y+scrollY,width:innerWidth,height:r.height,scale:1};})()`);
+    const cutawayShot = await call("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: cutawayClip });
+    fs.writeFileSync(`shots/premium/cutaway-${width}.png`, Buffer.from(cutawayShot.data, "base64"));
+    if (width === 1440 || width === 390) {
+      await evaluate(`document.querySelectorAll('#foundation-cutaway [aria-label="Сравнение качества исполнения"] button')[1].click()`);
+      await sleep(250);
+      const errorShot = await call("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: cutawayClip });
+      fs.writeFileSync(`shots/premium/cutaway-errors-${width}.png`, Buffer.from(errorShot.data, "base64"));
+      await evaluate(`document.querySelectorAll('#foundation-cutaway [aria-label="Сравнение качества исполнения"] button')[0].click()`);
+    }
     const drainageLayout = await evaluate(
       `Array.from(document.querySelectorAll('.drainage-story')).map(row=>{const copy=row.querySelector('.drainage-story-copy').getBoundingClientRect();const photo=row.querySelector('.drainage-story-photo').getBoundingClientRect();return {copyX:copy.x,photoX:photo.x,copyBottom:copy.bottom,photoTop:photo.top,photoHeight:photo.height};})`,
     );
@@ -324,6 +366,10 @@ try {
   await call("Page.navigate", { url: origin });
   await sleep(1300);
   assert(
+    await evaluate(`(()=>{const layer=document.querySelector('#foundation-cutaway svg [role="button"]');return getComputedStyle(layer).transitionDuration==='0s';})()`),
+    "Reduced motion disables foundation diagram transitions",
+  );
+  assert(
     await evaluate(
       'getComputedStyle(document.querySelector(".measure-tape")).clipPath === "inset(0px)"',
     ),
@@ -341,6 +387,7 @@ try {
     ),
     "Reduced motion removes the pinned scroll sequence",
   );
+  if (errors.length) console.error("JavaScript exceptions:", errors);
   assert(!errors.length, `No JavaScript exceptions (${errors.length})`);
   assert(
     !failedRequests.length,

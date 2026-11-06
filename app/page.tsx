@@ -7,6 +7,7 @@ import { SocialContacts } from "@/components/social-contacts";
 import { FoundationCards } from "@/components/foundation-cards";
 import { ConcreteScene } from "@/components/concrete-scene";
 import { MeasureScene } from "@/components/measure-scene";
+import { FoundationCutaway } from "@/components/foundation-cutaway";
 
 export default function Home() {
   return (
@@ -84,6 +85,7 @@ export default function Home() {
             <FoundationCards />
           </div>
         </section>
+        <FoundationCutaway />
         <ConcreteScene />
         <DrainageSection />
         <TrustSection />
