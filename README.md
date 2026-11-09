@@ -1,5 +1,7 @@
 # Фаворит-групп
 
+Шаблон WhatsApp-ссылки с готовым сообщением и пожелание пользователя: [docs/whatsapp-links.md](docs/whatsapp-links.md).
+
 Лендинг на Next.js, TypeScript, Tailwind CSS и Motion, с локальным Manrope.
 
 ## Запуск

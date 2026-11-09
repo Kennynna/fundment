@@ -7,6 +7,7 @@ const links = [
   ["#drainage", "Дренаж"],
   ["#standards", "Принципы"],
   ["#approach", "Подход"],
+  ["#faq", "Вопросы"],
 ];
 
 export function SiteHeader() {
@@ -74,7 +75,7 @@ export function SiteHeader() {
             </a>
           ))}
           <a href="#project" onClick={() => setOpen(false)}>
-            <span>05</span>Ваш проект<span>↗</span>
+            <span>06</span>Ваш проект<span>↗</span>
           </a>
         </nav>
       )}
