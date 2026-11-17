@@ -18,7 +18,7 @@ export default function Home() {
           <div className="wrap hero-grid">
             <div className="hero-copy">
               <p className="eyebrow">
-                <span className="square" /> Фундаменты и дренаж
+                <span className="square" /> Фундаменты · Московская область
               </p>
               <h1 id="hero-title">
                 Большие планы.
@@ -28,22 +28,22 @@ export default function Home() {
                 <span>основание.</span>
               </h1>
               <p className="hero-description">
-                Строим фундаменты и устраиваем дренаж.
-                <br className="desktop-break" /> Начинаем с земли. Думаем о
-                вашем доме.
+                Фундаменты под ключ для частных домов.
+                <br className="desktop-break" /> Устраиваем дренаж. Думаем о
+                вашем участке.
               </p>
               <a className="btn btn-primary" href="#foundations">
                 Выбрать фундамент <span aria-hidden="true">↗</span>
               </a>
               <div className="hero-note">
-                <span className="note-line" /> От подготовки участка до
-                бетонного основания
+                <span className="note-line" /> От первого разговора до сдачи
+                объекта
               </div>
             </div>
             <ConstructionHero />
           </div>
           <div className="wrap hero-foot">
-            <span>Основа вашего будущего дома</span>
+            <span>Работаем с частными заказчиками в Подмосковье</span>
             <a href="#foundations">
               Узнать больше <span aria-hidden="true">↓</span>
             </a>
@@ -60,7 +60,6 @@ export default function Home() {
               <a href="#standards" key={item}>
                 <span>0{index + 1}</span>
                 {item}
-                <span aria-hidden="true">↗</span>
               </a>
             ))}
           </div>
@@ -95,8 +94,8 @@ export default function Home() {
               <div>
                 <p className="eyebrow">04 / Путь к результату</p>
                 <h2>
-                  От замысла
-                  <br />к точным решениям.
+                  Фундамент под ключ.
+                  <br />От участка до сдачи.
                 </h2>
               </div>
             </div>
@@ -114,16 +113,20 @@ export default function Home() {
               <div className="process-list">
                 {[
                   [
-                    "Участок",
-                    "Рельеф, грунт, вода и доступ к месту строительства — исходные данные для выбора решения.",
+                    "Обсуждение и планирование",
+                    "Знакомимся с вашим проектом и участком. Определяем решение, состав работ и сроки строительства.",
                   ],
                   [
-                    "Решение",
-                    "Тип фундамента и дренаж рассматриваем вместе с конструкцией будущего здания.",
+                    "Подготовка участка",
+                    "Выполняем планировку участка и разрабатываем котлован. Готовим основание под фундамент.",
                   ],
                   [
-                    "Работы",
-                    "Подготовка основания, устройство конструкции и внимание к каждому этапу.",
+                    "Коммуникации и конструкция",
+                    "Устанавливаем закладные, подводим коммуникации. Выполняем армирование и монтаж опалубки.",
+                  ],
+                  [
+                    "Бетонирование и сдача",
+                    "Заливаем фундамент и доводим работы до сдачи объекта. Сопровождаем вас на каждом этапе.",
                   ],
                 ].map(([title, text], i) => (
                   <article key={title}>
@@ -149,7 +152,8 @@ export default function Home() {
               </h2>
               <p>
                 Напишите нам в удобном мессенджере. Обсудим будущий дом, условия
-                участка и решение для фундамента или дренажа.
+                участка в Московской области, состав работ и сроки строительства
+                фундамента или устройства дренажа.
               </p>
               <div className="project-tags">
                 <span>Расположение участка</span>
@@ -174,7 +178,7 @@ export default function Home() {
           <a href="#" className="wordmark">
             Фаворит<span>—</span>групп<span className="brand-dot">.</span>
           </a>
-          <p>Фундаменты. Дренаж. Основа.</p>
+          <p>Фундаменты и дренаж · Московская область</p>
           <a href="#main">Наверх ↑</a>
         </div>
         <div className="wrap footer-bottom">

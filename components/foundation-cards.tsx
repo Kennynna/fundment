@@ -39,7 +39,6 @@ function FoundationCard({ item, index }: { item: string[]; index: number }) {
     >
       <div className="card-top">
         <span>{number}</span>
-        <span aria-hidden="true">↗</span>
       </div>
       <div className={`foundation-icon ${type}`} aria-hidden="true">
         <i />
