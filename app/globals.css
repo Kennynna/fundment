@@ -73,6 +73,9 @@ h3 { font-size: 20px; font-weight: 700; letter-spacing: -.4px; }
 .three-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .card-label { margin-bottom: 24px; padding: 6px 10px; border-radius: 4px; font-size: 13px; font-weight: 600; }
 .principles-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 48px; }
+.company-facts { margin: 0 0 32px; padding-block: 24px; border-block: 1px solid var(--line); }
+.company-facts dt { font-size: 28px; font-weight: 700; line-height: 1.2; letter-spacing: -.6px; }
+.company-facts dd { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
 .principle { display: flex; gap: 20px; align-items: flex-start; padding-block: 16px; }
 .principle-number { color: var(--accent); font-size: 14px; font-weight: 700; padding-top: 3px; }
 .principle p { margin-top: 12px; max-width: 430px; }
