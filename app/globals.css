@@ -941,27 +941,39 @@ footer {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
   margin: 0 0 40px;
-  padding: 28px 0;
-  border-block: 1px solid var(--line);
+  padding: 0;
+  text-align: center;
+}
+.company-facts > div {
+  padding: 28px 20px;
+  border: 1px solid #b8c0af;
+  border-bottom: 3px solid #87957b;
+  background: #efeee7;
 }
 .company-facts dt {
   font-size: clamp(26px, 3vw, 40px);
+  font-weight: 800;
+  color: #26332d;
   letter-spacing: -1px;
   line-height: 1.2;
+}
+.company-fact-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 18px;
+  color: #526048;
 }
 .company-facts dd {
   margin: 10px 0 0;
   font-size: 14px;
-  color: var(--muted);
+  color: #526048;
+  font-weight: 500;
 }
 @media (max-width: 600px) {
   .company-facts {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-  .company-facts > div + div {
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
   }
 }
 .trust-ribbon {

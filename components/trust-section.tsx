@@ -62,15 +62,34 @@ export function TrustSection() {
         </div>
         <dl className="company-facts">
           <div>
-            <dt>17 лет</dt>
+            <dt>
+              <svg className="company-fact-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+                <rect x="5" y="7" width="22" height="21" rx="2" />
+                <path d="M10 4v6m12-6v6M5 14h22m-17 5h4m4 0h4m-12 5h4" />
+              </svg>
+              17 лет
+            </dt>
             <dd>на строительном рынке</dd>
           </div>
           <div>
-            <dt>Более 32</dt>
+            <dt>
+              <svg className="company-fact-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+                <path d="m3 15 13-11 13 11M7 12v15h18V12M13 27v-9h6v9" />
+                <path d="M3 28h26" />
+              </svg>
+              Более 32
+            </dt>
             <dd>реализованных объектов</dd>
           </div>
           <div>
-            <dt>Под ключ</dt>
+            <dt>
+              <svg className="company-fact-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="11" cy="11" r="7" />
+                <circle cx="9" cy="9" r="1" />
+                <path d="m16 16 12 12m-5-5 4-4m-8 0 4-4" />
+              </svg>
+              Под ключ
+            </dt>
             <dd>от первого общения до сдачи объекта</dd>
           </div>
         </dl>
